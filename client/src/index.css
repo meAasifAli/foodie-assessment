@@ -1,0 +1,87 @@
+
+@import "tailwindcss";
+
+/* Food delivery design system */
+@theme {
+  /* Brand */
+  --color-primary: #EA580C;
+  --color-primary-hover: #C2410C;
+  --color-primary-light: #FFF7ED;
+
+  /* Surfaces */
+  --color-background: #FFFCF8;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F7F3EE;
+
+  /* Typography */
+  --color-foreground: #292524;
+  --color-muted: #78716C;
+  --color-muted-light: #A8A29E;
+
+  /* Borders */
+  --color-border: #E7E0D8;
+  --color-border-strong: #D6CEC5;
+
+  /* Semantic states */
+  --color-success: #15803D;
+  --color-success-light: #F0FDF4;
+  --color-danger: #DC2626;
+  --color-danger-light: #FEF2F2;
+  --color-warning: #B45309;
+  --color-warning-light: #FFFBEB;
+
+  /* Typography */
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+
+  /* Layout */
+  --radius-card: 1rem;
+  --radius-button: 0.75rem;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px rgb(41 37 36 / 0.06);
+  --shadow-card-hover: 0 10px 30px rgb(41 37 36 / 0.10);
+}
+
+/* Global base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
