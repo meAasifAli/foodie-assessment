@@ -5,7 +5,7 @@
 -- ============================================
 
 -- 1. MENU ITEMS
-CREATE TABLE menu_items (
+CREATE TABLE IF NOT EXISTS menu_items (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
     description TEXT,
@@ -16,7 +16,7 @@ CREATE TABLE menu_items (
 );
 
 -- 2. ORDERS
-CREATE TABLE orders (
+CREATE TABLE IF NOT EXISTS orders (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     customer_name VARCHAR(150) NOT NULL,
     delivery_address TEXT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE orders (
 );
 
 -- 3. ORDER ITEMS
-CREATE TABLE order_items (
+CREATE TABLE IF NOT EXISTS order_items (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     order_id BIGINT NOT NULL
         REFERENCES orders(id) ON DELETE CASCADE,
@@ -52,11 +52,11 @@ CREATE TABLE order_items (
 );
 
 -- Indexes for common order lookups
-CREATE INDEX idx_orders_created_at
+CREATE INDEX IF NOT EXISTS idx_orders_created_at
     ON orders(created_at DESC);
 
-CREATE INDEX idx_orders_status
+CREATE INDEX IF NOT EXISTS idx_orders_status
     ON orders(status);
 
-CREATE INDEX idx_order_items_menu_item_id
+CREATE INDEX IF NOT EXISTS idx_order_items_menu_item_id
     ON order_items(menu_item_id);

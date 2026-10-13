@@ -8,7 +8,8 @@
     "dev": "nodemon src/server.js",
     "test": "vitest run",
     "test:watch": "vitest",
-    "seed:menu": "node src/scripts/seed-menu.js"
+    "seed:menu": "node src/scripts/seed-menu.js",
+    "db:init": "node src/scripts/init-db.js"
   },
   "keywords": [],
   "author": "",
@@ -18,11 +19,15 @@
     "cors": "^2.8.6",
     "dotenv": "^18.0.7",
     "express": "^5.3.0",
-    "pg": "^8.23.1"
+    "pg": "^8.23.1",
+    "ws": "^8.22.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14",
     "supertest": "^7.3.1",
     "vitest": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

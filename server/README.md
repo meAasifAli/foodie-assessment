@@ -40,15 +40,19 @@ Backend API for a food delivery ordering application, built with Node.js, Expres
    npm install
    ```
 
-2. Create a PostgreSQL database:
+2. Create a PostgreSQL database — either a managed one (see [Managed PostgreSQL](#managed-postgresql)) or a local one:
 
    ```sql
    CREATE DATABASE food_delivery_db;
    ```
 
-3. Create the tables using the SQL schema included in your project.
+3. Copy `env.example` to `.env` and set `DATABASE_URL` (managed) or the `DB_*` variables (local).
 
-4. Copy `.env.example` to `.env` and set your local PostgreSQL credentials.
+4. Create the tables (safe to re-run):
+
+   ```bash
+   npm run db:init
+   ```
 
 5. Seed the menu (52 dishes; safe to re-run — existing names are skipped):
 
@@ -71,6 +75,8 @@ The API commonly runs at `http://localhost:5000`. Use the port configured by you
 | Variable | Description |
 |---|---|
 | `PORT` | Port for the Express server |
+| `DATABASE_URL` | Managed PostgreSQL connection string. When set, the `DB_*` variables are ignored |
+| `DB_SSL` | `true` to force TLS when `DATABASE_URL` has no `sslmode` parameter |
 | `CLIENT_URL` | Frontend origin allowed by CORS |
 | `DB_HOST` | PostgreSQL host |
 | `DB_PORT` | PostgreSQL port |
@@ -79,6 +85,21 @@ The API commonly runs at `http://localhost:5000`. Use the port configured by you
 | `DB_PASSWORD` | PostgreSQL password |
 
 Never commit your real `.env` file or database credentials.
+
+## Managed PostgreSQL
+
+Any hosted PostgreSQL works; the app only needs a connection string.
+
+1. Create a database on your provider (e.g. [Neon](https://neon.tech), [Supabase](https://supabase.com), or Render PostgreSQL).
+2. Copy its connection string into `DATABASE_URL`, keeping `?sslmode=require` on the end.
+3. From `server/`, with that `.env` in place, run once:
+
+   ```bash
+   npm run db:init
+   npm run seed:menu
+   ```
+
+4. On your hosting platform, set `DATABASE_URL` and `CLIENT_URL` (your deployed frontend origin) as environment variables, use `npm install` as the build command and `npm start` as the start command.
 
 ## API endpoints
 
