@@ -2,6 +2,10 @@
 
 Backend API for a food delivery ordering application, built with Node.js, Express, and PostgreSQL.
 
+## Database schema
+
+![Database ER diagram](../Food%20Delivery%20Order%20Management.png)
+
 ## Features
 
 - List available menu items

@@ -2,6 +2,12 @@
 
 React 19 + Vite + Tailwind CSS v4 + Redux Toolkit frontend for the food delivery assessment. Guest checkout only.
 
+## Design
+
+Application flow and wireframes:
+
+![Application flow and wireframes](../design%20system%20assessment.png)
+
 ## Scripts
 
 ```bash
